@@ -12,10 +12,11 @@
     'use strict';
     var appendP = function () {
         var divWrapper = document.createElement("div");
+        divWrapper.className = "playControls__control";
         divWrapper.style.marginRight = "0";
-        divWrapper.className = "playControls__repeat playControls__control";
+
         var button = document.createElement("button");
-        button.className = "repeatControl sc-ir m-none sort-by-plays";
+        button.className = "repeatControl sc-ir";
         button.style.backgroundImage = 'url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjQgMjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojRkY1NTAwO30KPC9zdHlsZT4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIxMS44LDcuNyAxMS44LDE2LjMgMTkuMywxMiAiLz4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSI2LjEsNi40IDYuMSwxNC42IDQuMSwxNC42IDcuMSwxOC42IDEwLjEsMTQuNiA4LjEsMTQuNiA4LjEsNi40ICIvPgo8L3N2Zz4K")'
         button.onclick = function () {
             var list = Array.from(document.querySelectorAll('.soundList__item')).sort(function (a, b) {
@@ -28,6 +29,7 @@
                 list[i].parentNode.appendChild(list[i]);
             };
         };
+
         divWrapper.appendChild(button);
         var elToInsertBefore = document.querySelector(".playControls__timeline");
         var controlsBar = elToInsertBefore.parentNode;
@@ -35,13 +37,15 @@
     };
     var appendL = function () {
         var divWrapper = document.createElement("div");
+        divWrapper.className = "playControls__control";
         divWrapper.style.marginLeft = "0";
-        divWrapper.className = "playControls__repeat playControls__control";
+
         var button = document.createElement("button");
-        button.className = "repeatControl sc-ir m-none sort-by-likes";
+        button.className = "repeatControl sc-ir";
         button.style.backgroundImage = 'url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjQgMjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojRkY1NTAwO30KPC9zdHlsZT4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSI2LjEsNi40IDYuMSwxNC42IDQuMSwxNC42IDcuMSwxOC42IDEwLjEsMTQuNiA4LjEsMTQuNiA4LjEsNi40ICIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTcuNSw4LjVjLTEuNiwwLTIuMiwxLjktMi4yLDEuOVMxNC42LDguNSwxMyw4LjVjLTEuMywwLTIuNywwLjktMi41LDIuOGMwLjMsMi4zLDQuNSw1LjEsNC43LDUuMQoJYzAuMiwwLDQuNS0yLjksNC43LTUuMUMyMC4xLDkuNSwxOC44LDguNSwxNy41LDguNXoiLz4KPC9zdmc+Cg==")'
         button.onclick = function () {
             var list = Array.from(document.querySelectorAll('.soundList__item')).sort(function (a, b) {
+                // TODO: Refacter the regex part. Digit after comma is lost and replaced by 0.
                 var a_likes = parseInt(a.querySelector('.sc-button-like').innerText.replace('.', '').replace(/,\d/g, '').replace('K', '000').replace('M', '000000'))
                 var b_likes = parseInt(b.querySelector('.sc-button-like').innerText.replace('.', '').replace(/,\d/g, '').replace('K', '000').replace('M', '000000'))
                 return b_likes - a_likes;
@@ -51,6 +55,7 @@
                 list[i].parentNode.appendChild(list[i]);
             };
         };
+
         divWrapper.appendChild(button);
         var elToInsertBefore = document.querySelector(".playControls__timeline");
         var controlsBar = elToInsertBefore.parentNode;
@@ -62,5 +67,6 @@
             await new Promise(r => setTimeout(r, 500));
         };
     };
+    
     waitFor(".soundList__item").then(appendP).then(appendL);
 })();
