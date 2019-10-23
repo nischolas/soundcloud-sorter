@@ -1,7 +1,7 @@
 # SoundCloud Sorter
 A small script for Tampermonkey based on [SoundCloud Extensions by xerg0n](https://github.com/xerg0n/soundcloud_extentions).
 
-![alt text](preview.png "Sorting buttons between repeat buttond and track scrubber")
+![alt text](preview.png "Sorting buttons between repeat button and track scrubber")
 
 Adds sorting by likes and plays buttons to the SoundCloud control bar with custom icons. Works for /likes, /tracks and /reposts. On /likes, the waveform view has to be active. Scroll down to load some (or all) tracks, then press a button to sort them.
 
